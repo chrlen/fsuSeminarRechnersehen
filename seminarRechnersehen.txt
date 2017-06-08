@@ -1,0 +1,44 @@
+
+
+#Abstract
+
+This paper deals with local 3D descriptors for surface matching.
+
+Two classes of Models:
+	-> Signatures
+	-> Histograms
+
+Discussion/experiments -> key issues of uniqueness and repeatabillity
+observations 	-> new unique and repeatable local reference frame + new descriptor
+new descriptor 	-> lies at intersection between 	Signatures and histogram
+				-> possibly better balance between descriptiveness and robustnes
+
+Validated on public Data-Sets
+					range scans obtained with "Spacetime Stereo"								
+
+#Introduction and previous work
+
+Surface matching 	-> The ability of computing similarities between 3D surfaces
+				 	-> key task of CV
+				 	-> Applications in robotics, 
+				 					automation, 
+				 					biometric systems,
+				 					reverse engineering,
+				 					search in 3D-Object-Data-bases 	-> Johnson, A., Hebert, M.: Using spin images for efficient object recognition in cluttered 3Dscenes. PAMI 21, 433–449 (1999)
+				 													-> Mian, A., Bennamoun, M., Owens, R.: A novel representation and feature matching algo-rithm for automatic pairwise registration of range images.
+				 													->  Conde, C., Rodr ́ıguez-Arag  ́on, L.J., Cabello, E.: Automatic 3D face feature points extractionwith spin images. In: Campilho, A., Kamel, M.S. (eds.) ICIAR 2006. LNCS, vol. 4142, pp.317–328. Springer, Heidelberg (2006)
+				 
+
+Strong interesst since 1980
+Early work: Fitting 3D-Data with global parametric surfaces such as 	?geons 
+																			-> Wu, K., Levine, M.: Recovering parametrics geons from multiview range data. In: CVPR,pp. 159–166 (1994)
+																		?superquadrics 
+																			-> Solina,  F.,  Bajcsy,  R.:  Recovery  of  parametric  models  from  range  images:  the  case  forsuperquadrics with global deformations. PAMI 12, 131–147 (1990)
+
+
+Last 15 Years: Most Popular Trend 
+	Compact local representation of input data, known as descriptor
+	Shares basic motivation with the successful approaches for matching 2D images.
+
+Use local correspondeces matched by descriptors to solve higher level problems such as 3D object recognition
+	-> deal effectively with problems such as occlusion,clutter and changes of viewpoint 

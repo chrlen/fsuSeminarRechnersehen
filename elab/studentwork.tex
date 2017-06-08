@@ -1,0 +1,142 @@
+%%%%% Explanation of class options
+%
+% font size: YOU HAVE TO CHOOSE one of the following: 10pt, 11pt, 12pt
+% language: YOU HAVE TO CHOOSE one of the following: english, german, ngerman
+% type: YOU HAVE TO CHOOSE one of the following: seminar, project
+%
+% additional options will be passed to the base class "scrartcl"
+%
+%%%%% End of explanations
+\documentclass[12pt,english,seminar]{dbvstudentwork}
+
+\include{./header} % put all the required packages and stuff in file header.tex
+\usepackage{blindtext}
+
+\begin{document}
+
+  \begin{dbvstudentworkTitlepage}
+
+    % Specify the title and a possible subtitle of your work, if you do not have a subtitle, comment the Subtitle command out
+    \Title{3D-Deskriptoren für Aufgaben der Rekonstruktion und Objekerkennung} % mandatory
+    %\Subtitle{It is possible, that the subtitle is also too long for a single line} % optional
+
+    % Specify your first and last name
+    \FirstName{Christian} % mandatory
+    \LastName{Lengert} % mandatory
+
+    % Specify the title of the course (title of seminar or project) and the name of your advisor(s)
+    \CourseTitle{Seminar Rechnersehen}
+    \Advisor{Sven Sickert} % mandatory
+
+    % Specify the date of your submission/deadline, default: \Deadline{\today}
+    \Deadline{\today}
+
+    % Specify a second institute, company, etc. if you do not have a second institute or a company, comment the following command out
+    %\SecondInstitute{Carl Zeiss AG \\ 07743 Jena \\ Germany} % optional
+
+  \end{dbvstudentworkTitlepage}
+
+\section{Abstract} % \section*{Überblick}
+
+  Short outline of your work.
+
+\clearpage
+\tableofcontents
+\clearpage
+
+% ----------------------------------------------------------------------------------------
+
+\section{Motivation}
+\label{sec:motivation}
+
+  Motivation of your topic/work.
+
+% ----------------------------------------------------------------------------------------
+
+\section{Second section}
+\label{sec:second}
+
+  \blindtext~\cite{Doe12:TIA}
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Subsection 2.1}
+\label{subsec:2.1}
+
+  \Blindtext[2][2]
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Subsection 2.2}
+\label{subsec:2.2}
+
+  \Blindtext[2][2]
+
+% ----------------------------------------------------------------------------------------
+
+\section{Third section}
+\label{sec:third}
+
+  \blindtext
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Subsection 3.1}
+\label{subsec:3.1}
+
+  \Blindtext[2][2]
+
+  reference: Figure~\ref{fig:myFigure}\newline
+
+  \begin{figure}[tb]
+    \centering
+    \rule{4cm}{1cm}
+    \caption[figure caption displayed in list of figures]{figure caption displayed below the figure}
+    \label{fig:myFigure}
+  \end{figure}
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Subsection 3.2}
+\label{subsec:3.2}
+
+  \Blindtext[2][2]
+
+  reference: Table~\ref{fig:myTable}\newline
+
+  \begin{table}[tb]
+    \centering
+    \begin{tabular}{cc}
+      example & table\\
+      1 & 2\\
+      3 & 4\\
+    \end{tabular}
+    \caption[table caption displayed in list of figures]{table caption displayed below the table}
+    \label{fig:myTable}
+  \end{table}
+
+% ----------------------------------------------------------------------------------------
+
+% Include more sections if necessary
+
+% ----------------------------------------------------------------------------------------
+
+\section{Summary} % \section{Zusammenfassung}
+\label{sec:summary}
+
+  Summary and conclusions
+
+% ----------------------------------------------------------------------------------------
+
+  \singlespacing
+
+  \interlinepenalty10000 % so no bib-entry will be separated by a pagebreak
+  \clearpage
+  \bibliography{studentwork.bib}
+  \bibliographystyle{alphadin} % change the bib-style if you want to
+  \clearpage
+  \listoffigures % optional
+  \clearpage
+  \listoftables % optional
+
+\end{document}
