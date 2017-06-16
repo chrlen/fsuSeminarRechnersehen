@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multimedia}
+\usepackage{color}
+\usepackage{float}
+\usepackage{geometry}
+
+
+\begin{document}
+\section{Gliederung}
+\subsection{Einführung}
+
+
+
+
+Zu Beginn werden durch Anwendungsbeispiele die folgenden Fragen geklärt:\\
+\begin{itemize}
+	\item Was versteht man unter \textbf{Surface-Matching/Deskriptoren}
+	\item Zur Lösung von welchen Problemen wird es eingesetzt( Rekonstruktion/Objekterkennung )
+	\item Klärung der nötigen Begriffe (descriptor,signature,histogram,support,reference frame,reference axis,...)
+\end{itemize}
+\subsection{Was bisher geschah}
+Es wird ein Überblick über die bisherige Entwicklung gegeben.
+\begin{itemize}
+	\item Welche Ansätze wurden bisher verfolgt? (signature/histogram)
+	\item Wo liegen die Schwierigkeiten (clutter,noise,translation,rotation)
+	\item Wie kann man Deskriptoren bewerten? (invariance,robustness)
+\end{itemize}
+\subsection{Fortschritt}
+Welche Probleme sehen Tombari et. al, wie lösen Sie diese
+\begin{itemize}
+	\item Einfluss des Reference-Frames auf den Deskriptor
+	\item Ein oder mehrere Reference-Frames (uniqueness/ambiguity)
+	\item Ein guter Reference-Frame durch eigenvalue-decomposition und das Erzeugen von Eindeutigkeit durch Berechnung eines Vorzeichens.
+\end{itemize}
+\subsection{Signaturen von Histogrammen \textbf{SHOT}}
+\begin{itemize}
+	\item{ 
+		Von 2D nach 3D: Warum funktioniert SIFT und wie kann man diese Prinzipien auf dreidimensionale Probleme anwenden}
+	\item{
+		Trotz Ableitungen robust gegenüber Rauschen? 
+	} 
+	\item {
+		Kombination von Histogrammen über Winkel zwischen Punkt- und Umfeldnormalenvektoren als Deskriptor an der Schnittstelle zwischen Signatur und Histogramm
+	}
+	\item{
+		Wahl des Koordinatensystems für die Signatur
+	}
+	\item{
+		Robustheit gegenüber Schwankungen in der Punktdichte
+	}
+\end{itemize}
+\subsection{Validierung im Experiment}
+\begin{itemize}
+	\item Wie wird Wiederholbarkeit garantiert?
+	\item Wie werden faire Wettbewerbsbedingungen garantiert?
+	\item Ist SHOT besser als die gewählten Gegner?
+	\item Wenn ja, wie viel in welchen Bereichen.
+\end{itemize}
+\section{Literatur}
+Neben dem zentralen Paper von Tombari et al. werden auch die in der Literaturliste der Veröffentlichung genannten Werke verwendet, hier aber nicht nochmal einzeln aufgeführt.
+\begin{description}
+	\item[Unique Signatures of Histograms for Local Surface
+Description]{
+	by Federico Tombari, Samuele Salti, and Luigi Di Stefano
+} 
+	\item[Three-Dimensional Computer Vision]{
+	 by Olivier D. Faugeras
+	}
+	\item[Multiple View Geometry in Computer Vision]{
+	 by Richard Hartley and Andrew Zisserman
+	}
+	\item[Introductory Techniques For 3D Computer Vision]{
+emanuele trucco and alessandro verri
+	}
+
+\end{description}
+\end{document}

@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{SD}
+Luigi Di~Stefano Federico~Tombari, Samuele~Salti.
+\newblock Unique signatures of histograms for local surface description.
+\newblock 2010.
+
+\bibitem{harris}
+Mike~Stephens Chris~Harris.
+\newblock A combined corner and edge detector.
+\newblock 1988.
+
+\bibitem{robot}
+Se~et~al.
+\newblock Mobile robot localization and mapping with uncertainty using
+  scale-invariant visual landmarks.
+\newblock 2002.
+
+\bibitem{SpinImage}
+Martial~Hebert Andrew E.~Johnson.
+\newblock Using spin images for efficient object recognition in cluttered 3d
+  scenes.
+\newblock 1999.
+
+\bibitem{biometrics}
+Licesio J. Rodríguez-Aragón Cristina~Conde and Enrique Cabello.
+\newblock Automatic 3d face feature points extraction with spin images.
+
+\end{thebibliography}

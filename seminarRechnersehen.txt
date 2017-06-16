@@ -42,3 +42,18 @@ Last 15 Years: Most Popular Trend
 
 Use local correspondeces matched by descriptors to solve higher level problems such as 3D object recognition
 	-> deal effectively with problems such as occlusion,clutter and changes of viewpoint 
+
+
+
+
+
+Using Spin Images for Efficient Object Recognition in Cluttered 3D Scenes
+	
+	Shape representations are used to collate the information
+	stored in sensed 3D points so that surfaces can be compared
+	efficiently
+
+
+
+Tombasi:
+

@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multimedia}
+\usepackage{color}
+\usepackage{float}
+\usepackage{geometry}
+
+
+\geometry{a4paper, top=20mm, left=20mm, right=20
+mm, bottom=30mm,
+headsep=10mm, footskip=12mm}
+
+\newcommand\svthema{3D-Deskriptoren für Aufgaben der Rekonstruktion und Objekterkennung}
+\newcommand\svperson{Christian Lengert}
+\newcommand\svdatum{\today}
+\newcommand\lvtyp{Sommersemester 2017}
+
+\newcommand\lvinst{Computervision Group · FSU Jena}
+
+%Set font
+%\renewcommand*\rmdefault{pbk}
+%Set font Helvetica
+\renewcommand*\rmdefault{phv}
+
+
+
+\begin{document}
+\title{ \textbf{\color{black}\svthema} }
+\author{ \textsl{\color{red}\svperson} --- \svdatum }
+\date{ \small  {\lvtyp} · {\lvinst} }
+\maketitle
+
+\abstract{
+Im Rahmen des Seminars Rechnersehen der Friedrich-Schiller-Universität entsteht dieser Text als Ausarbeitung des Themas \textit{3D-Deskriptoren für Aufgaben der Rekonstruktion und Objekterkennung} und soll zusammen mit dem Vortrag einen Einblick in den Aufbau und die Einsatzbereiche von 3D-Deskriptoren geben. Abschnitt \ref{intro} beleuchtet das Konzept hinter dem Begriff 3D-Desriptor, erklärt das für den Themenbereich notwendige Vokabular und liefert Einblick in die Einsatzbereiche. Dann folgt in \ref{past} ein Überblick über den Entwicklungsprozess und die Bewertung von Deskriptoren. In \ref{prog} wird auf die in Tombari et. al. \cite{SD} entwickelte Methode \textbf(SHOT) eingegangen. Hier sollen die Unterschiede zu den vorherigen Methoden herausgearbeitet werden, wohingegen dann in \ref{sig} der Fokus ganz auf den Komponenten der \textbf{SHOT}-Methode liegen soll.
+}
+
+\section{Einführung}\label{intro}
+\paragraph{3D-Deskriptor}
+Ein 3D-Deskriptor ist eine Methode um Punkte $p$, welche zu einer Fläche im $\mathbb{R}^3$ gehören, anhand der Punkte in Ihrer Umgebung zu beschreiben. Diese Beschreibung soll dann der Identifikation dienen, sodass man die Beschreibung eines Punktes mit einer anderen Beschreibung vergleichen kann. So ist es möglich, aus beschriebenen Punkten zusammengesetzte Flächen miteinander zu vergleichen und den Grad der Ähnlichkeit von Objekten festzustellen. Das Problem des Oberflächenvergleichs ist allgemein als \textbf{Surface-Matching} bezeichnet. 
+
+Die Eingabe für einen Deskriptor ist ein Teil einer Punktwolke, zum einen der Punkt, welcher später als Merkmal dienen soll, sowie die Punkte in seinem Umfeld, ab jetzt als \textbf{Nachbarschaft} bezeichnet.
+Um mehrere Features aus einem Bild zu extrahieren werden die Deskriptoren für viele Punkte im Bild berechnet. Diese können zum Beispiel zufällig gewählt sein \cite{SD} oder durch die Berechnung und Auswertung von Gradientenbildern an interessante Punkte im Bild, wie zum Beispiel Ecken gelegt werden \cite{harris}. Der Auswahlprozess wird als \textbf{Feature Selection} bezeichnet. 
+
+ 
+ %Local correspondences established by matching3D descriptors (Fig. 1) can then be used to solve higher level tasks such as 3D object recognition
+
+\subsection{Einsatzbereiche} Die Einsatzbereiche sind sehr vielseitig, Beispiele sind die Lokalisation von Robotern anhand der Auswertung von Daten aus den an Ihnen angebrachten optischen Sensoren \cite{robot} , sowie die Konstruktion von 3D-Modellen aus zweidimensionalen Bildern\cite{SpinImage}. Desweiteren verbessert der Einsatz von dreidimensionalen Abbildern und Methoden im Bereich der Biometrie die Erkennungsrate signifikant, da Sie robuster gegenüber Variation in Objektposition und Beleuchtung sind \cite{biometrics}.
+Bereits vor dem Erkennen von Objekten\ref{obj} wurden Deskriptoren für die Detektion von Bewegungen durch das Erkennen von Punktverschiebungen im sogenannten Motion-Tracking eingesetzt.
+
+\subsection{Struktur}
+%Ein Deskriptor basiert auf Art und Wei
+
+%REFERENCE/FRAME
+%REFERENCE/AXIS
+
+
+Nach \cite{SD} kann man die Art der Betrachtung der Nachbarschaft in zwei Gruppen einteilen. Der Unterschied besteht in der Form des Nachbarschaftsbereichs und in der Berechnung, die auf ihn angewand wird.
+%two main categories
+\subsubsection{Signatur}
+ signatures are potentially highly descriptive
+thanks to the use of spatially well localized information
+
+The first category, that includes earliest works on the
+subject, describes the 3D surface neighborhood of a given point (hereinafter support)
+by defining an invariant local Reference Frame (RF) and encoding, according to the
+local coordinates, one or more geometric measurements computed individually on each
+point of a subset of the support
+
+\subsubsection{Histogramm}
+Wird das Histogramm als Beschreibungsmethode gewählt, so wird eine diskrete Anzahl an Merkmalen benötigt, welche dann durch Auszählung der Ausprägungen als Wahrscheinlichkeitsdichtefunktion verwendet wird. 
+
+Die Reduktion des Umfeldes auf ein zählbares Merkmal 
+
+
+
+
+%histograms trade-off
+%descriptive power for robustness by compressing geometric structure into bins.
+
+%On the other hand, Histogram-based methods describe
+%the support by accumulating local geometrical or topological measurements (e.g. point
+%counts, mesh triangle areas) into histograms according to a specific quantized domain
+%(e.g. point coordinates, curvatures) which requires the definition of either a Reference
+%Axis (RA) or a local RF
+
+\paragraph{Surface-Matching}
+
+%Surface
+%alignment has numerous applications including localization
+%for robot navigation [27] and modeling of complex
+%scenes from multiple views [13]
+
+%Zwei der großen Einsatzbereiche von Deskriptoren sollen nun genauer untersucht werden.
+
+\subsubsection{Objekterkennung}\label{obj}
+
+\subsubsection{Rekonstruktion}
+Die Rekonstruktion von 
+
+
+%Through surface matching, an object can be recognized in a scene by comparing a sensed surface to an object surface stored in memory\cite{SpinImage}
+
+
+%Zu Beginn werden durch Anwendungsbeispiele die folgenden Fragen geklärt:\\
+%\begin{itemize}
+%	\item Was versteht man unter \textbf{Surface-Matching/Deskriptoren}
+%	\item Zur Lösung von welchen Problemen wird es eingesetzt(Rekonstruktion/Objekterkennung)
+%	\item Klärung der nötigen Begriffe (descriptor,signature,histogram,support,reference frame,reference axis,...)
+%\end{itemize}
+
+
+\section{Was bisher geschah}\label{past}
+Es wird ein Überblick über die bisherige Entwicklung von 3D-Deskriptoren gegeben um unterschiedliche Ansätze aufzuzeigen und eine Reihe an Parametern definiert, anhand denen eine Bewertung stattfinden kann.
+
+\subsection{Probleme}%o liegen die Schwierigkeiten (clutter,noise,translation,rotation)
+
+In der Vergangenheit wurde versucht, dieses Problem durch eine Beschreibung der gesamten betrachteten Oberfläche zu lösen. 
+
+%Early works were based on fitting 3D data with global parametric surfaces such as geons [4]
+%or superquadrics [5]
+
+
+
+
+
+
+
+Schon lange ist klar, dass die Betrachtung von einzelnen Punkten innerhalb einer Oberfläche
+\subsection{Bewertung}%ie kann man Deskriptoren bewerten? (invariance,robustness) applicability, efficiency, robustness to resolution, and the discriminating capability
+Die Güte eines solchen Deskriptors ist daran zu messen wie gut er folgende Eigenschaften erfüllt, bzw. wie gut er mit dem Auftreten folgender Effekte umgeht:
+
+\item[Effizienter Vergleich] Der Vergleich von Oberflächen soll möglichst wenig Rechenaufwand erfordern, in hochaufgelösten Daten muss hochfrequent verglichen werden um im Optimalfall Verarbeitung in Echtzeit zu ermöglichen. 
+
+\description{
+\item[Invarianz] Der Deskriptor soll Punkte und Ihre Ungebung auch dann noch als korrospondierend identifizieren, wenn sie Translation oder Rotation, also geometrischen Transformationen, ausgesetzt wurden. 
+
+\item[Rauschen] Der Einfluss von unterschiedlichen Rauscharten soll möglichst gering sein. 
+
+\item[Beleuchtung] Ein Wechsel der Beleuchtung, bzw. die Verschiebung eines Objektes relativ zu einer Lichtquelle soll das Ergebnis nicht verändern. 
+
+\item[Clutter] In realen Szenen sind die zu findenden Objekte meist nicht alleine, viele andere Objekte befinden sich im Bild und müssen ausgeschlossen werden.
+
+\item[Verdeckung/Occlusion] Wenn andere Objekte im Bild sind kann es auch zu Verdeckungen kommen. Nicht alle bekannte Punkte eines Objekts sind erkennbar, anhand von unvollständigen Informationen muss eine Klassifizierungsentscheidung möglich sein.
+}
+
+\subsection{Bisherige Ansätze}%Welche Ansätze wurden bisher verfolgt? (signature/histogram)
+
+Nun soll eine Auswahl der in \cite{SD} verglichenen und erprobten Ansätze kurz vorgestellt werden.
+
+\description{
+	\item[Spin Images \cite{SpinImage}] Die Methode der Spin-Images wurde 1999 von Andrew Johnson und Martial Herbert vorgestellt. Sie wird in die Klasse der histogrammbasierten Methoden eingeordnet. Johnson und Herbert berechnen für ausgewählte Punkte die Oberflächennormale, indem Sie eine Ebene an die Nachbarschaft des Punktes einpassen. Die Nachbarschaft definieren sie als alle Punkte, welche durch ein Oberflächennetz verbunden direkte Nachbarn sind. Nun spannen sie einen Zylinder auf, dessen Radius die Distanz zwischen Punkt und Flächennormale ist, und dessen Höhe durch die vorzeichenbehaftete Distanz zwischen Punkt und Ebene bestimmt wird. 
+	\item[]
+
+	\item[]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Fortschritt}\label{prog}
+Welche Probleme sehen Tombari et. al, wie lösen Sie diese
+\begin{itemize}
+	\item Einfluss des Reference-Frames auf den Deskriptor
+	\item Ein oder mehrere Reference-Frames (uniqueness/ambiguity)
+	\item Ein guter Reference-Frame durch eigenvalue-decomposition und das Erzeugen von Eindeutigkeit durch Berechnung eines Vorzeichens.
+\end{itemize}
+
+\section{Signaturen von Histogrammen \textbf{SHOT}}\ref{sig}
+Tombari et. al. sehe
+
+
+\begin{itemize}
+	\item{ 
+		Von 2D nach 3D: Warum funktioniert SIFT und wie kann man diese Prinzipien auf dreidimensionale Probleme anwenden}
+	\item{
+		Trotz Ableitungen robust gegenüber Rauschen? 
+	} 
+	\item {
+		Kombination von Histogrammen über Winkel zwischen Punkt- und Umfeldnormalenvektoren als Deskriptor an der Schnittstelle zwischen Signatur und Histogramm
+	}
+	\item{
+		Wahl des Koordinatensystems für die Signatur
+	}
+	\item{
+		Robustheit gegenüber Schwankungen in der Punktdichte
+	}
+\end{itemize}
+
+\section{Validierung im Experiment}
+\begin{itemize}
+	\item Wie wird Wiederholbarkeit garantiert?
+	\item Wie werden faire Wettbewerbsbedingungen garantiert?
+	\item Ist SHOT besser als die gewählten Gegner?
+	\item Wenn ja, wie viel in welchen Bereichen.
+\end{itemize}
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{myBib}
+%\nocite{*}
+
+\end{document}
