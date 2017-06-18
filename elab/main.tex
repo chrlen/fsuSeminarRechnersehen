@@ -29,8 +29,8 @@ headsep=10mm, footskip=12mm}
 %Set font
 %\renewcommand*\rmdefault{pbk}
 %Set font Helvetica
-\renewcommand*\rmdefault{phv}
-
+%\renewcommand*\rmdefault{phv}
+\rmfamily
 
 
 \begin{document}
@@ -40,21 +40,31 @@ headsep=10mm, footskip=12mm}
 \maketitle
 
 \abstract{
-Im Rahmen des Seminars Rechnersehen der Friedrich-Schiller-Universität entsteht dieser Text als Ausarbeitung des Themas \textit{3D-Deskriptoren für Aufgaben der Rekonstruktion und Objekterkennung} und soll zusammen mit dem Vortrag einen Einblick in den Aufbau und die Einsatzbereiche von 3D-Deskriptoren geben. Abschnitt \ref{intro} beleuchtet das Konzept hinter dem Begriff 3D-Desriptor, erklärt das für den Themenbereich notwendige Vokabular und liefert Einblick in die Einsatzbereiche. Dann folgt in \ref{past} ein Überblick über den Entwicklungsprozess und die Bewertung von Deskriptoren. In \ref{prog} wird auf die in Tombari et. al. \cite{SD} entwickelte Methode \textbf(SHOT) eingegangen. Hier sollen die Unterschiede zu den vorherigen Methoden herausgearbeitet werden, wohingegen dann in \ref{sig} der Fokus ganz auf den Komponenten der \textbf{SHOT}-Methode liegen soll.
+Im Rahmen des Seminars Rechnersehen der Friedrich-Schiller-Universität entsteht dieser Text als Ausarbeitung des Themas \textit{3D-Deskriptoren für Aufgaben der Rekonstruktion und Objekterkennung} und soll zusammen mit dem Vortrag einen Einblick in den Aufbau und die Einsatzbereiche von 3D-Deskriptoren geben. Abschnitt \ref{intro} beleuchtet das Konzept hinter dem Begriff 3D-Desriptor, erklärt das für den Themenbereich notwendige Vokabular und liefert Einblick in die Einsatzbereiche. Dann folgt in \ref{past} ein Überblick über den Entwicklungsprozess und die Bewertung von Deskriptoren. In \ref{prog} wird auf die in Tombari et. al. \cite{SD} entwickelte Methode \textbf(SHOT) eingegangen. Hier sollen die Unterschiede zu den vorherigen Methoden herausgearbeitet werden. Dann erfolgt in \ref{eval} die Evaluation der vorgestellten Methoden, und abschließend ein Fazit und das Literaturverzeichnis.
 }
 
 \section{Einführung}\label{intro}
 \paragraph{3D-Deskriptor}
 Ein 3D-Deskriptor ist eine Methode um Punkte $p$, welche zu einer Fläche im $\mathbb{R}^3$ gehören, anhand der Punkte in Ihrer Umgebung zu beschreiben. Diese Beschreibung soll dann der Identifikation dienen, sodass man die Beschreibung eines Punktes mit einer anderen Beschreibung vergleichen kann. So ist es möglich, aus beschriebenen Punkten zusammengesetzte Flächen miteinander zu vergleichen und den Grad der Ähnlichkeit von Objekten festzustellen. Das Problem des Oberflächenvergleichs ist allgemein als \textbf{Surface-Matching} bezeichnet. 
 
+
+%Through surface matching, an object can be recognized in a scene by comparing a sensed surface to an object surface stored in memory\cite{SpinImage}
+
 Die Eingabe für einen Deskriptor ist ein Teil einer Punktwolke, zum einen der Punkt, welcher später als Merkmal dienen soll, sowie die Punkte in seinem Umfeld, ab jetzt als \textbf{Nachbarschaft} bezeichnet.
-Um mehrere Features aus einem Bild zu extrahieren werden die Deskriptoren für viele Punkte im Bild berechnet. Diese können zum Beispiel zufällig gewählt sein \cite{SD} oder durch die Berechnung und Auswertung von Gradientenbildern an interessante Punkte im Bild, wie zum Beispiel Ecken gelegt werden \cite{harris}. Der Auswahlprozess wird als \textbf{Feature Selection} bezeichnet. 
+Um mehrere Features aus einem Bild zu extrahieren werden die Deskriptoren für viele Punkte im Bild berechnet. Diese können zum Beispiel zufällig gewählt sein \cite{SD} oder durch die Berechnung und Auswertung von Gradientenbildern an interessante Punkte im Bild, wie zum Beispiel Ecken, gelegt werden \cite{harris}. Der Auswahlprozess wird als \textbf{Feature Selection} bezeichnet. 
 
  
  %Local correspondences established by matching3D descriptors (Fig. 1) can then be used to solve higher level tasks such as 3D object recognition
 
-\subsection{Einsatzbereiche} Die Einsatzbereiche sind sehr vielseitig, Beispiele sind die Lokalisation von Robotern anhand der Auswertung von Daten aus den an Ihnen angebrachten optischen Sensoren \cite{robot} , sowie die Konstruktion von 3D-Modellen aus zweidimensionalen Bildern\cite{SpinImage}. Desweiteren verbessert der Einsatz von dreidimensionalen Abbildern und Methoden im Bereich der Biometrie die Erkennungsrate signifikant, da Sie robuster gegenüber Variation in Objektposition und Beleuchtung sind \cite{biometrics}.
+\subsection{Einsatzbereiche} Die Einsatzbereiche sind sehr vielseitig, Beispiele sind die Lokalisation von Robotern anhand der Auswertung von Daten aus den an Ihnen angebrachten optischen Sensoren \cite{robot} , sowie die Konstruktion von 3D-Modellen aus zweidimensionalen Bildern \cite{SpinImage}. Desweiteren verbessert der Einsatz von dreidimensionalen Abbildern und Methoden im Bereich der Biometrie die Erkennungsrate signifikant, da Sie robuster gegenüber Variation in Objektposition und Beleuchtung sind \cite{biometrics}.
 Bereits vor dem Erkennen von Objekten\ref{obj} wurden Deskriptoren für die Detektion von Bewegungen durch das Erkennen von Punktverschiebungen im sogenannten Motion-Tracking eingesetzt.
+
+\subsubsection{Objekterkennung}\label{obj}
+Die Verwendung zur Erkennung von Objekten ist einer der Haupteinsatzbereiche von 3D-Deskriptoren. Aus der oben beschriebenen Möglichkeit, Flächen durch mehrere Punktdeskriptoren zu beschreiben, lässt sich eine Methode der Objekterkennung konstruieren.\\
+Angenommen, es wird über ein Model eines Objektes verfügt, welches zum Beispiel mit einem Verfahren der 3D-Bildgewinnug, oder durch Modellierung gewonnen wurde. Dann kann ein das Objekt repräsentierende Struktur erzeugt werden, indem an hinreichend vielen Punkten ein Deskriptor berechnet wird. Diese lokalen Punktdeskriptoren werden dann zusammengenommen als Repräsentation für das Objekt verwendet und zum Beispiel in einer Datenbank hinterlegt. Liegt nun eine Szene vor, in der sich das Objekt, in anderer räumlicher Lage, vielleicht teilweise verdeckt von anderen Szeneobjekten, befindet, dann besteht die Aufgabe darin, das Objekt zu suchen und zu lokalisieren. Dieses Problem wird im Verlauf des Textes noch ausgiebig behandelt. 
+
+\subsubsection{Rekonstruktion}\label{rec}
+Punktdeskriptoren können auch zur Rekonstruktion von Oberflächen verwendet werden. Durch optische Sensoren, wie zum Beispiel LIDAR, Stereokamerasysteme, oder photogrammetrische Methoden, erzeugte Punktwolken beschreiben Oberflächen oftmals nicht ausreichend gut für bestimmte Einsatzbereiche. Im Zusammenhang mit der Vollautomatisierung von Baumaschinen \cite{constr}, der automatischen Landung von Raumsonden oder im Bereich der Archeologie \cite{cavity} sind, werden sehr detailierte Informationen über die Oberflächen der jeweiligen Umgebungen benötigt. Diese müssen durch das Schätzen von Punktposition durch Betrachtung der bekannten Punkte interpoliert werden.
 
 \subsection{Struktur}
 %Ein Deskriptor basiert auf Art und Wei
@@ -65,155 +75,111 @@ Bereits vor dem Erkennen von Objekten\ref{obj} wurden Deskriptoren für die Dete
 
 Nach \cite{SD} kann man die Art der Betrachtung der Nachbarschaft in zwei Gruppen einteilen. Der Unterschied besteht in der Form des Nachbarschaftsbereichs und in der Berechnung, die auf ihn angewand wird.
 %two main categories
-\subsubsection{Signatur}
- signatures are potentially highly descriptive
-thanks to the use of spatially well localized information
+\subsubsection{Signatur} Eine Signatur zeichnet sich durch die Definition eines Referenzrahmens aus, welcher die die Nachbarschaft definiert. Auf jeden der benachbarten Punkte wird dann unter Berücksichtigung seiner relativen Position zum beschriebenen Punkt, zum Beispiel durch ein Distanzmaß, eine Berechnung ausgeführt. Die Kombination der Ergebnisse liefert dann den Deskriptor. Beispiele folgen später mit den Methoden der Point-Signatures und des Expontial Mappings.
 
-The first category, that includes earliest works on the
-subject, describes the 3D surface neighborhood of a given point (hereinafter support)
-by defining an invariant local Reference Frame (RF) and encoding, according to the
-local coordinates, one or more geometric measurements computed individually on each
-point of a subset of the support
+% signatures are potentially highly descriptive
+%thanks to the use of spatially well localized information
+
+%The first category, that includes earliest works on the
+%subject, describes the 3D surface neighborhood of a given point (hereinafter support)
+%by defining an invariant local Reference Frame (RF) and encoding, according to the
+%local coordinates, one or more geometric measurements computed individually on each
+%point of a subset of the support
 
 \subsubsection{Histogramm}
-Wird das Histogramm als Beschreibungsmethode gewählt, so wird eine diskrete Anzahl an Merkmalen benötigt, welche dann durch Auszählung der Ausprägungen als Wahrscheinlichkeitsdichtefunktion verwendet wird. 
+Wird das Histogramm als Beschreibungsmethode gewählt, so wird eine diskrete Anzahl an Merkmalen benötigt, welche dann durch Auszählung der Ausprägungen als diskrete Wahrscheinlichkeitsdichtefunktion verwendet wird. \\
 
-Die Reduktion des Umfeldes auf ein zählbares Merkmal 
+Bei der Reduktion durch Zählung können unter Umständen Informationen über die lokale Position der Punkte in der Nachbarschaft verloren gehen. Bei der Berechnung von Spin Images \cite{SpinImage} zum Beispiel wird auf den Radius und die Höhe im Zylinder relativ zur Punktnormalen reduziert, es ist also nur bekannt, auf welcher Rotationsbahn sich ein benachbarter Punkt befunden hat. Dieser Informarionsverlust reduziert die Beschreibungskraft des lokalen Umfelds, kann jedoch zu mehr Robustheit gegenüber dem Einfluss von Rauschen führen \cite{SD}\\
 
-
-
-
-%histograms trade-off
-%descriptive power for robustness by compressing geometric structure into bins.
-
-%On the other hand, Histogram-based methods describe
-%the support by accumulating local geometrical or topological measurements (e.g. point
-%counts, mesh triangle areas) into histograms according to a specific quantized domain
-%(e.g. point coordinates, curvatures) which requires the definition of either a Reference
-%Axis (RA) or a local RF
-
-\paragraph{Surface-Matching}
-
-%Surface
-%alignment has numerous applications including localization
-%for robot navigation [27] and modeling of complex
-%scenes from multiple views [13]
-
-%Zwei der großen Einsatzbereiche von Deskriptoren sollen nun genauer untersucht werden.
-
-\subsubsection{Objekterkennung}\label{obj}
-
-\subsubsection{Rekonstruktion}
-Die Rekonstruktion von 
+Histogrammbasierte Deskription erfordert die Definition einer Referenzachse, wie z.B. die eben genannte Punktnormale.
 
 
-%Through surface matching, an object can be recognized in a scene by comparing a sensed surface to an object surface stored in memory\cite{SpinImage}
-
-
-%Zu Beginn werden durch Anwendungsbeispiele die folgenden Fragen geklärt:\\
-%\begin{itemize}
-%	\item Was versteht man unter \textbf{Surface-Matching/Deskriptoren}
-%	\item Zur Lösung von welchen Problemen wird es eingesetzt(Rekonstruktion/Objekterkennung)
-%	\item Klärung der nötigen Begriffe (descriptor,signature,histogram,support,reference frame,reference axis,...)
-%\end{itemize}
-
-
-\section{Was bisher geschah}\label{past}
-Es wird ein Überblick über die bisherige Entwicklung von 3D-Deskriptoren gegeben um unterschiedliche Ansätze aufzuzeigen und eine Reihe an Parametern definiert, anhand denen eine Bewertung stattfinden kann.
-
-\subsection{Probleme}%o liegen die Schwierigkeiten (clutter,noise,translation,rotation)
-
-In der Vergangenheit wurde versucht, dieses Problem durch eine Beschreibung der gesamten betrachteten Oberfläche zu lösen. 
-
-%Early works were based on fitting 3D data with global parametric surfaces such as geons [4]
-%or superquadrics [5]
-
-
-
-
-
-
-
-Schon lange ist klar, dass die Betrachtung von einzelnen Punkten innerhalb einer Oberfläche
-\subsection{Bewertung}%ie kann man Deskriptoren bewerten? (invariance,robustness) applicability, efficiency, robustness to resolution, and the discriminating capability
-Die Güte eines solchen Deskriptors ist daran zu messen wie gut er folgende Eigenschaften erfüllt, bzw. wie gut er mit dem Auftreten folgender Effekte umgeht:
-
-\item[Effizienter Vergleich] Der Vergleich von Oberflächen soll möglichst wenig Rechenaufwand erfordern, in hochaufgelösten Daten muss hochfrequent verglichen werden um im Optimalfall Verarbeitung in Echtzeit zu ermöglichen. 
-
-\description{
-\item[Invarianz] Der Deskriptor soll Punkte und Ihre Ungebung auch dann noch als korrospondierend identifizieren, wenn sie Translation oder Rotation, also geometrischen Transformationen, ausgesetzt wurden. 
-
-\item[Rauschen] Der Einfluss von unterschiedlichen Rauscharten soll möglichst gering sein. 
-
-\item[Beleuchtung] Ein Wechsel der Beleuchtung, bzw. die Verschiebung eines Objektes relativ zu einer Lichtquelle soll das Ergebnis nicht verändern. 
-
-\item[Clutter] In realen Szenen sind die zu findenden Objekte meist nicht alleine, viele andere Objekte befinden sich im Bild und müssen ausgeschlossen werden.
-
-\item[Verdeckung/Occlusion] Wenn andere Objekte im Bild sind kann es auch zu Verdeckungen kommen. Nicht alle bekannte Punkte eines Objekts sind erkennbar, anhand von unvollständigen Informationen muss eine Klassifizierungsentscheidung möglich sein.
-}
-
-\subsection{Bisherige Ansätze}%Welche Ansätze wurden bisher verfolgt? (signature/histogram)
+\section{Bisherige Ansätze}\label{past}%Welche Ansätze wurden bisher verfolgt? (signature/histogram)
 
 Nun soll eine Auswahl der in \cite{SD} verglichenen und erprobten Ansätze kurz vorgestellt werden.
 
 \description{
-	\item[Spin Images \cite{SpinImage}] Die Methode der Spin-Images wurde 1999 von Andrew Johnson und Martial Herbert vorgestellt. Sie wird in die Klasse der histogrammbasierten Methoden eingeordnet. Johnson und Herbert berechnen für ausgewählte Punkte die Oberflächennormale, indem Sie eine Ebene an die Nachbarschaft des Punktes einpassen. Die Nachbarschaft definieren sie als alle Punkte, welche durch ein Oberflächennetz verbunden direkte Nachbarn sind. Nun spannen sie einen Zylinder auf, dessen Radius die Distanz zwischen Punkt und Flächennormale ist, und dessen Höhe durch die vorzeichenbehaftete Distanz zwischen Punkt und Ebene bestimmt wird. 
-	\item[]
+	\item[Spin Images (SI) \cite{SpinImage}]\label{SI} Die Methode der Spin-Images wurde 1999 von Andrew Johnson und Martial Herbert vorgestellt. Sie wird in die Klasse der histogrammbasierten Methoden eingeordnet, ihre Nachbarschaftsbeschreibung basiert auf einer Referenzachse. Johnson und Herbert berechnen für ausgewählte Punkte die Oberflächennormale, indem Sie eine Ebene an die Nachbarschaft des Punktes einpassen. Die Nachbarschaft definieren sie als alle Punkte, welche durch ein Oberflächennetz verbunden direkte Nachbarn des als Feature gewählten Punktes sind. Nun spannen sie einen Zylinder mit Radius $r$ und Höhe $h$ auf, dessen Rotationsachse die eben berechnete Normale des Punktes ist. Nun wird ein Fläche $r * h$ um die Achse rotiert und es werden Zähler für jeden Punkt mit den Koordinaten $(r,h)$ inkrementiert. Durch Zählung der Punkte an spezfischen Koordinaten relativ zur Rotationachse ergibt sich ein Histogramm, das Spin-Image. Darüber hinaus wird die Anzahl der betrachteten Punkte dadurch reduziert, dass nur Punkte betrachtet werden, deren Normalenwinkel bis zu einem Maximalmaß von Winkel des betrachteten Punktes abweichen. 
 
-	\item[]
+	\item[Point Signatures (PS) \cite{pointSig}]\label{PS} Die Beschreibungsform der Point-Signatures ist ein Vertreter der Signatur-basierten Ansätze für die Punktbeschreibung. Chua und Jarvis legen eine Sphäre um den zu beschreibenden Punkt, sodass dieser das Zentrum darstellt, und betrachten dann den Ausschnitt der Fläche des Objektes als Nachbarschaft, welcher durch den Schnitt mit der Sphäre begrenzt wird. Eine Ebene wird in die Region eingepasst, wessen Normale für gegen Null strebenden Radius der Sphäre die tangentiale Ebene im Punkt $p$ realisiert. Wenn diese Ebene dann auf den Punkt $p$ angehoben oder abgelassen wird, wird das durch den Sphärenschnitt erzeugte eindimensionale Höhenprofil auf die Ebene projeziert. Dadurch wird eine vorzeichenbehaftete Repräsentation des Umfeldes erzeugt. Für jeden Winkel der Sphäre ist die Distanz zwischen Profil und Ebene negativ wenn die Ebene über dem Profil liegt und positv, wenn sie sich darunter befindet. 
+
+	Ein Vergleich zweier so erzeugter Signaturen $s_{1,2}$ erfolgt durch den Vergleich der Betragsdiffererenz mit einem Schwellenwert $\epsilon$ wie folgt: \\
+
+	$$|s_1(\Theta_i)-s_1(\Theta_i) > \epsilon|$$
+
+	wobei die Vektoren $\Theta_i$ die Profil-Ebenen-Distanzen an einer diskreten Anzahl an Winkeln sind. 
+
+	\item[Exponential Mapping [EM] \cite{em}]\label{EM} Der Deskriptor in der Veröffentlichung basiert auf der Idee, die Größe der zu betrachteten Nachbarschaft vom Umfeld des Betrachteten Punktes abhäning zu machen. Die Wahl der relevanten Punkte wird durch eine Eckendetektion auf der zu betrachtenden dreidimensionalen Struktur getroffen. Der Ausgangspunkt dazu ist eine Normalmap, eine Sicht der Struktur in der ein Punkt durch seine Normale repräsentiert wird. Durch die Filterung mit Gauss-Kernen mit steigender Standardabweichung wird ein sogenanter Scale-Space erzeugt, welcher inherent die Skalenvarianz, also Schwankungen in der Dichte der Punktwolke verkörpert. Die Berechnung der Eckpunkte erfolgt dann durch die Berechnung der Gram-Matrix, der Matrix der partiellen ersten Ableitungen auf allen Skalen (Standardabweichungen).
+
+	Der eigentliche Deskriptor wird nun auf dem Scale-Space definiert, indem für alle Skalen jeweils ein skalenabhängiger Deskriptor berechnet wird und die Ergebnisse zu einem unabhängigen zusammengefasst werden. Der abhängige Deskriptor basiert auf dem geodätischen Distanzbegriff, welcher durch den kürzesten Weg zwischen zwei Punkte definiert ist, wenn der Weg der Oberfläche folgt, zu der die zwei Punkte gehören. Die geodätische Distanz zwischen zwei Punkten auf der Erdkugel wäre der Umfang des Kreisausschnittes den ein Reisender auf der Kugel zurücklegt. Da die Anzahl an Punkten im Modell endlich ist wird die geodätische Distanz zwischen Punkten $a,b$ durch die Summe der euklischen Distanzen zwischen den Knoten des kürzesten Weges zwischen $a$ und $b$ definiert. \\
+
+Zur skalenabhängingen Deskription wird jeder Punkt $n$ in der Nachbarschaft des detektierten Eckpunktes $e$ auf ein Wertepaar $(d,\Theta)$ abgebildet, wobei $d$ die geodätische Distanz zwischen $e$ und $d$ ist, und $\Theta$ der polare Winkel einer Tangente an der Geodäte ist. Diese Tangente ist relativ zu einer für alle Punkte fixierten Basis.\\
+
+Der skalenunabhängige Deskriptor wir dann aus der Kombination aus von abhängigen Deskriptoren einer Skalenreihe erzeugt.\\
+Die Berechnung der Ähnlichkeit zwischen zwei Deskriptoren wird dann über die Kreuzkorrelation der entstandenen zweidimensionalen Repräsentaionen gewonnen, wobei nur die Punkte in der Schnittmenge der Nachbarschaften in die Berechnung einbezogen werden.
+
+}
+
+\section{Fortschritt}\label{prog}
+Nun sollen der von Tombari et al. konstruierte Deskriptor vorgestellt werden. 
+
+\subsection{SHOT}%\label{shot}
+Der \textbf{SHOT} Deskriptor verwendet als Basis der Umgebungsbeschreibung nicht wie die vorher betrachteten Methoden, entweder ein Histogramm oder eine Signatur, sondern eine Kombination aus beidem.\\
+Die durch die sukzessive Aufteilung der Nachbarschaft erreichte Wahrung der räumlichen Lageinformationen relativ zum betrachteten Punkt ähnelt der Bildung einer Signatur. Deshalb wird in der Veröffentlichung von einer Deskription durch Signaturen von Histogrammen gesprochen. Der Deskriptor soll so die Stärken der beiden Ansätze in sich vereinen.\\
+
+\subsubsection{Der Referenzrahmen}
+Zuerst wird ein adquater Referenzrahmen definiert. Dafür wird zunächst wie in anderen Methoden auch die Normale des Punktes geschätzt. Dies geschieht als Weiterentwicklung eines Verfahrens aus \cite{sr,pc}, welche eine Least-Squares-Schätzung durch die Wahl des zum kleinsten Eigenwert gehörenden Eigenvektors der Kovarianzmatrix der $k$ nächsten Nachbarn verwendet.
+Um die Performanz in mehrere Objekte enthaltenden Punkträumen zu erhöhen, werden die Punkte aus der Nachbarschaft absteigend mit der Distanz gewichtet. Außerdem werden die alle Punkte in einer Sphäre um den zu betrachtenden Punkt ebenfalls in die Berechnung einbezogen.
+Dies ermöglicht die Belegeung der durch die drei größten Eigenvektoren repräsentierten Basis mit Vorzeichen.
+\subsubsection{Der Deskriptor}
+Der Deskriptor ist inspiriert durch eine im Bereich der zweidimensionalen Deskription sehr erfogreiche Methode, genannt \textit{Scale Invariant Feature Transform (SIFT)}.
+\paragraph{SIFT \cite{sift}}
+In dieser Methode wird, ähnlich wie in \ref{EM}, durch kaskadierte Anwendungen von Gauß-Filtern ein Scale-Space erzeugt. Die gefilterten Bilder werden in sogenannte Oktaven eingeteilt. Nun wird zwischen je zwei Bildern einer Oktave die Differenz der gefilterten Bilder berechnet. 
+Aus diesem Scale-Space sollen markante Punkte im Bild gewonnen werden, welche dann durch den Deskriptor beschrieben werden. Die Relevanz eines Punkte wird bewertet, indem lokale Minima und Maxima über die benachbarten Skalen und die Skala, in dem sich der Punkt befindet, gebildet werden. Nur wenn sein Wert größer oder kleiner als der Wert von acht benachbarten Punkten im selben Bild ist, und wenn sein Wert in den benachbarten Skalen sich zu neun benachbarten Punkten genau so verhält, wird er ausgewählt. 
+
+Die so gewählten Punkte garantieren eine skalierungsinvariante Beschreibung, da sie durch mehrere Skalen hinweg relevanten Einfluss auf die Extremwertbildung haben.\\
+Im Anschluss daran wird für die gewählten Punkte im Umfeld die Gradientenrichtung bestimmt und es werden mehrere Histogramme über eine diskrete Anzahl an möglichen Richtungen gebildet. Dafür wird das Umfeld in eine Anzahl an Quadraten eingeteilt (z.b. 4x4). Für jeden dieser Bereiche wird ein eigenes Histogramm berechnet und die Kombination in Form eines einzelnen Vektors dient als Deskriptor.\\
+Abschließend wird der fertige Deskriptor normiert um Invarianz gegenüber Beleuchtung zu garantieren.\\
+
+Der Vergleich mit anderen Deskriptor-Vektoren kann dann zum Beispiel über den Nächster-Nachbar-Klassifikator oder über einen Clustering-Ansatz erfolgen.
+
+\paragraph{Von 2D nach 3D}
+Für den \textit{SHOT}-Deskriptor wird die Histogrammbildung über Teilbereiche der Nachbarschaft in den dreidimensionalen Raum übertragen. Dazu muss natürlich das Gitter angepasst werden, bezüglich dem die Histgramme berechnet werden. Dazu wird ein isotropisches sphärisches Koordinatensystem verwendet, im dem jeder Punkt durch Betrag des Ortsvektors und zwei Winkel, den Azimuth-Winkel in der $XY$-Ebene und der polaren Winkel in der $YZ$-Ebene, beschrieben wird.
+Durch eine Diskretisierung dieser drei Achsen wird eine sphärische Nachbarschaft in Bereiche eingteilt, über die dann jeweils im nächsten Schritt ein Histogramm gebildet werden kann. Tombari et al. schlagen eine Skalierung vor in der die Azimuth-Achse in acht Bereicht geteilt wird und die beiden verbleibenden Maße jeweils in zwei Stufen geteilt werden, wodurch sich dann 32 Bereiche ergeben. \\
+Über diese Bereiche sollen nun Histogramm erzeugt werden, welche am Ende zum fertigen Deskriptor vereint werden.
+Die Einteilung erfolgt dabei über den Kosinus des Winkels zwischen Normale im Feature Punkte und der Normalen der Punkte in der Nachbarschaft. Der Kosinus wird gewählt, da so die Auflösung des Histogramms variabel von der Größe des Winkels abhängig wird. Im Bereich der kleinen Abweichungen ist die Auflösung hoch, mit größer werdendem Winkel nimmt sie ab. Nebeneinander liegende Punkte mit großen Winkelunterschieden sind eher selten, die geringe Auflösung in diesem Bereich stärkt die Robustheit gegenüber durch Rauschen verursachten Ausreißern.
+
+\section{Evaluation}\label{eval}
+Im Experiment wurden die in \ref{past} vorgestellten Deskriptoren miteinander verglichen. Dazu wurden drei unterschiedliche Szenarien konstruiert, in denen sich die Deskriptoren beweisen sollen. In den ersten beiden Experimenten wurden für jedes Modell 1000 Feature Points ausgewählt, im letzten dann 3000 Punkte pro Szene.\\
+Die Parameter der Modelle, der Radius des die Nachbarschaft beschreibenden Körpers und die Länge des Deskriptors, wurden anhand einer Testszene eingestellt.\\
+Die Performanz wurde durch die Precision- und Recallmaße gemessen, wobei die Precision die Anzahl der richtig klassifizierten $tp$ mit den fälschlicherweise als richtig klassifizierten Punkten $fp$ in Verbindung bringt $\frac{tp}{tp+fp}$. Der Recall gibt Aufschluss darüber, wie viele der als richtig klassifizierten Modelle im Verhältnis den fälschlicherweise als negativ klassifiziert Modellen gegenüberstehen: $\frac{tp}{tp+fn}$.
+
+\description{
+\item[Experiment 1]
+Zuerst wurden sechs Modelle aus dem \textit{Stanford 3D Scanning Repository} gewählt. Mit diesen wurden dann 45 Szenen erzeugt, indem die Modelle zufällig ausgewählt, verschoben und rotiert wurden. Dann wurden die Szenen künstlich mit Gaussrauschen in 3 unterschiedlichen Intensitäten versetzt. Hier soll die Robustheit gegenüber Rauschen getestet werden.\\
+Es zeigt sich, dass die Histogrammbasierte Methode der Spin-Images das schlechteste Ergebnis erzielt. Die Methoden EM und PS erzielen aufsteigend bessere Resultate, SHOT verliert mit steigendem Rauschanteil zwar auch an Genauigkeit, jedoch erzielt es immernoch bessere Ergebnisse, so, dass mit hoher Precission auch ein hoher Recall einhergeht. 
+
+\item[Experiment 2]
+Hier wurden wieder die Szenen aus dem ersten Experiment verwendet. Dieses Mal wurde aber die Punktedichte in den Szenen drastisch reduziert($\frac{1}{8}$).\\
+Hier wird klar, dass die Dichtereduktion einen sehr starken Einfluss auf die Güte der Deskriptoren hat.\\
+Alle Testkandiaten verlieren stark an Güte, SHOT, PI und SI liegen dabei ungefähr gleich auf. Exponential-Mapping erkennt durchweg sehr wenige der Muster und hat somit durchweg sehr niedrigen Recall.
+
+\item[Experiment 3]
+Im letztem Versuch wurden im Labor erzeugtes Szenen verwendet, die verwendeten acht Modelle sind durch \cite{space} erzeugt worden, eine Methode um dreidimensionale Objekte aus zwei Videostreams einer Stereokamera zu erzeugen. Jeweils zwei der acht Objekte wurden in 15 Szenen verteilt, welche zusätzlich andere zufällig verteilte Objekte enthielt. Die zwei Modelle sollten trotz Überlappung und Clutter zuverlässig erkannt werden. Dieser Versuch kommt dem tatsächlichen Einsatz vom Deskriptoren am nächsten.\\
+Dabei liegt wieder SHOT vor den anderen Methoden, es folgen dann SI, PS und zuletzt, wieder EM mit vergleichsweise sehr niedrigem Recall in dieser Reihenfolge.\\
+\item[Geschwindigkeit] Bei der Analyse der Zeit pro Feature Punkt liegen Spin-Images und SHOT ungefähr gleich auf, wobei SI immer etwas schneller ist. Größenordnungen langsamer ist EM und noch wesentlich später folgt PS.
 }
 
 
+\section{Fazit}
+Der in der Veröffentlichung proklamierte SHOT-Deskriptor wurde im Nachinein vielfach zitiert und verwendet \cite{c1,c2,c3}, jedoch wurde auch Skepsis bezüglich der Leistung von konstruierten Deskriptoren im Vergleich mit dem Einsatz von tiefen künstlichen neuronalen Netzen geäußert.
+Ich persönlich denke, dass die Nachvollziehbarkeit des Berechnungsprozesses und somit der Gewinn von Wissen über die Modellierung von Problembereichen ein grundlegender Vorteil von konstruktiven Methoden gegenüber dem konnektionistischen Ansatz ist. Jedoch überzeugt in der Praxis die Leistung und nicht der Wissensgewinn.\\
+
+Die Arbeit mit dreidimensionalen Deskriptoren  war sehr aufschlussreich und hat viele Einblicke in sehr abstrakte geometrische Sachverhalte geboten. Die Anzahl der Veröffentlichungen zum Thema 3D-Deskription ist hoch und es existieren eine Vielzahl an teilweise grundsätzlich unterschiedlichen Methoden. Es ist interessant zu sehen, wie Methoden, die sich bewährt haben, immer wieder aufgegriffen und verbessert werden.
 
 
-
-
-
-
-
-
-
-
-\section{Fortschritt}\label{prog}
-Welche Probleme sehen Tombari et. al, wie lösen Sie diese
-\begin{itemize}
-	\item Einfluss des Reference-Frames auf den Deskriptor
-	\item Ein oder mehrere Reference-Frames (uniqueness/ambiguity)
-	\item Ein guter Reference-Frame durch eigenvalue-decomposition und das Erzeugen von Eindeutigkeit durch Berechnung eines Vorzeichens.
-\end{itemize}
-
-\section{Signaturen von Histogrammen \textbf{SHOT}}\ref{sig}
-Tombari et. al. sehe
-
-
-\begin{itemize}
-	\item{ 
-		Von 2D nach 3D: Warum funktioniert SIFT und wie kann man diese Prinzipien auf dreidimensionale Probleme anwenden}
-	\item{
-		Trotz Ableitungen robust gegenüber Rauschen? 
-	} 
-	\item {
-		Kombination von Histogrammen über Winkel zwischen Punkt- und Umfeldnormalenvektoren als Deskriptor an der Schnittstelle zwischen Signatur und Histogramm
-	}
-	\item{
-		Wahl des Koordinatensystems für die Signatur
-	}
-	\item{
-		Robustheit gegenüber Schwankungen in der Punktdichte
-	}
-\end{itemize}
-
-\section{Validierung im Experiment}
-\begin{itemize}
-	\item Wie wird Wiederholbarkeit garantiert?
-	\item Wie werden faire Wettbewerbsbedingungen garantiert?
-	\item Ist SHOT besser als die gewählten Gegner?
-	\item Wenn ja, wie viel in welchen Bereichen.
-\end{itemize}
-
-
-
-
+\paragraph{Anmerkung}
+Für allgemeine Inforamtionen im Bereich der 3D-Bildverarbeitung wurden zusätzlich folgende Bücher verwendet \cite{faugeras1993three-dimensional,hartley2004multiple,trucco1998introductory}
 \bibliographystyle{unsrt}
 \bibliography{myBib}
 %\nocite{*}

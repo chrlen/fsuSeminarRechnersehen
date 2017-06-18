@@ -1,0 +1,85 @@
+%
+%	LaTeX - SCHABLONE fuer die VORTRAGSPRÄSENTATION
+%
+%	\documentclass[hidesubsections,inrow]{beamer}
+\documentclass[hidesubsections,compress]{beamer}
+%
+% What to output:
+%       [notes], [notesonly], [trans], [handout]
+% Font family, size selection:
+%       [sans], [serif], [mathsans], [mathserif]
+%       {smaller,bigger}
+% General color trend:
+%       {red,blue,grey,brown}
+% Topology options:
+%       {hide,shade}subsections compress
+%       slides{centered,top}
+
+%usepackage{beamerthemesidebardarktab}
+%	\usepackage{beamertemplates}		%% no longer supported
+%\usepackage[latin1]{inputenc}
+%\usepackage[german]{babel}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multimedia}
+\usepackage{pdfpcnotes}
+\usepackage{sansmathaccent}
+\pdfmapfile{+sansmathaccent.map}
+
+
+\usetheme{Singapore}
+%\usecolortheme{beetle}
+\usefonttheme[onlysmall]{structurebold}
+
+\newcommand\lvtyp{SEMINAR}
+\newcommand\lvname{Rechnersehen}
+\newcommand\lvinst{Computervision Group · FSU Jena}
+
+%
+%	HIER WERDEN TITEL REFERENT UND DATUM EINGETRAGEN
+%
+\newcommand\svthema{3D-Deskriptoren für Aufgaben der Rekonstruktion und Objekterkennung}
+\newcommand\svperson{Christian Lengert}
+\newcommand\svdatum{20.~Juni 2017}
+
+\title{ \textbf{\textcolor{blue}{\svthema}} }
+\author{ \emph{\textcolor{red}{\svperson}} }
+\institute{ {\lvtyp} \emph{"`\lvname"'} }
+\date{ \tiny \lvinst \\ \svdatum }
+
+\setcounter{tocdepth}{2}
+\begin{document}
+   \frame { \titlepage }
+
+   \frame{
+      \frametitle{Vortragsgliederung}
+      \begin{small}
+	     \tableofcontents%[subsectionstyle=hide]
+      \end{small}
+   }
+   \section {Einführung}
+\frame{ \tableofcontents[currentsection] }
+\input{topics/intro/intro.tex}
+\section{Einsatzbereiche}
+\frame{\tableofcontents[currentsection]}
+\input{topics/eigenschaften/eigenschaften.tex}
+\section{Auswahl}
+\frame{ \tableofcontents[currentsection] }
+\input{topics/auswahl/auswahl.tex}
+\section{Vergleich}
+\frame{ \tableofcontents[currentsection] }
+\input{topics/vergleich/vergleich.tex}
+\frame{\frametitle{Vielen Dank für die 
+Aufmerksamkeit}}
+\end{document}
