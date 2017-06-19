@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{SD}
 Luigi Di~Stefano Federico~Tombari, Samuele~Salti.
@@ -25,5 +25,78 @@ Martial~Hebert Andrew E.~Johnson.
 \bibitem{biometrics}
 Licesio J. Rodríguez-Aragón Cristina~Conde and Enrique Cabello.
 \newblock Automatic 3d face feature points extraction with spin images.
+
+\bibitem{constr}
+Lee~Kim Sung, Kwon.
+\newblock Fast and robust 3d terrain surface reconstruction of construction
+  site using stereo camera.
+\newblock 2016.
+
+\bibitem{cavity}
+Bauer Paar.
+\newblock Cavity surface measuring system using stereo reconstruction.
+
+\bibitem{pointSig}
+RAY~JARVIS CHIN SENG~CHUA.
+\newblock Point signatures: A new representation for 3d object recognition.
+
+\bibitem{em}
+Ko~Nishino John~Novatnack.
+\newblock Scale-dependent/invariant local 3d shape descriptors for fully
+  automatic registration of multiple sets of range images.
+
+\bibitem{sr}
+Duchamp McDonald~Stuetzle Hoppe, DeRose.
+\newblock Surface reconstruction from unorganized points.
+\newblock 1992.
+
+\bibitem{pc}
+Guibas Mitra, Nguyen.
+\newblock Estimating surface normals in noisy point cloud data.
+\newblock 2004.
+
+\bibitem{sift}
+David~G. Lowe.
+\newblock Distinctive image features from scale-invariant keypoints.
+\newblock 2004.
+
+\bibitem{space}
+Seitz Zhang, Curless.
+\newblock Spacetime stereo: Shape recovery for dynamic scenes.
+\newblock 2003.
+
+\bibitem{c1}
+Branson Maiolino, Woolley.
+\newblock Flexible robot sealant dispensing cell using rgb-d sensor and
+  off-line programming.
+\newblock 2017.
+
+\bibitem{c2}
+Zhou~Pi Lin, Min.
+\newblock A human-robot-environment interactive reasoning mechanism for object
+  sorting robot.
+\newblock 2017.
+
+\bibitem{c3}
+Oprea et al.Classification of Aerial Photogrammetric 3D Point~Cloud
+  Garcia-Garcia, Orts.
+\newblock Multi-sensor 3d object dataset for object recognition with full pose
+  estimation.
+\newblock 2017.
+
+\bibitem{faugeras1993three-dimensional}
+Olivier Faugeras.
+\newblock {\em Three-dimensional computer vision : a geometric viewpoint}.
+\newblock MIT Press, Cambridge, Mass, 1993.
+
+\bibitem{hartley2004multiple}
+Richard Hartley.
+\newblock {\em Multiple view geometry in computer vision}.
+\newblock Cambridge University Press, Cambridge, UK New York, 2004.
+
+\bibitem{trucco1998introductory}
+Emanuele Trucco.
+\newblock {\em Introductory techniques for 3-D computer vision}.
+\newblock Prentice Hall, Upper Saddle River, NJ, 1998.
 
 \end{thebibliography}

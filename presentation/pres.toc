@@ -1,0 +1,16 @@
+\select@language {ngerman}
+\beamer@sectionintoc {1}{Einf\IeC {\"u}hrung}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Objekterkennung}{5}{0}{1}
+\beamer@subsectionintoc {1}{2}{Rekonstruktion}{6}{0}{1}
+\beamer@sectionintoc {2}{Eigenschaften}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Struktur}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{Schwierigkeiten}{9}{0}{2}
+\beamer@sectionintoc {3}{Auswahl}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{Spin Images}{11}{0}{3}
+\beamer@subsectionintoc {3}{2}{Point Signatures}{13}{0}{3}
+\beamer@subsectionintoc {3}{3}{Exponential Mapping}{15}{0}{3}
+\beamer@subsectionintoc {3}{4}{Exponential Mapping}{16}{0}{3}
+\beamer@subsectionintoc {3}{5}{SHOT}{17}{0}{3}
+\beamer@sectionintoc {4}{Vergleich}{19}{0}{4}
+\beamer@subsectionintoc {4}{1}{Bewertung}{21}{0}{4}
+\beamer@subsectionintoc {4}{2}{Ergebnisse}{23}{0}{4}

@@ -37,6 +37,12 @@
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
 
+%\makeatletter
+%\let\@noitemerr\relax
+%\makeatother
+
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+
 
 \usetheme{Singapore}
 %\usecolortheme{beetle}
@@ -64,14 +70,29 @@
 
    \frame{
       \frametitle{Vortragsgliederung}
-      \begin{small}
-	     \tableofcontents%[subsectionstyle=hide]
-      \end{small}
+ 		\begin{small}
+			\tableofcontents%[subsectionstyle=hide]
+    	\end{small}
+   }
+
+
+   \frame{
+   \frametitle{Unique Signatures of Histograms for Local Surface Description}
+			%\begin{center}
+			\begin{itemize}
+				\item Frederico Tombari  
+				\item Samuele Salti
+				\item Luigi Di Stefano
+				\item Universitiy of Bologna
+				\item 2010
+			\end{itemize}
+			%\end{center}
+			\includegraphics[width=\textwidth]{pape.jpg}
    }
    \section {Einführung}
-\frame{ \tableofcontents[currentsection] }
+%\frame{ \tableofcontents[currentsection] }
 \input{topics/intro/intro.tex}
-\section{Einsatzbereiche}
+\section{Eigenschaften}
 \frame{\tableofcontents[currentsection]}
 \input{topics/eigenschaften/eigenschaften.tex}
 \section{Auswahl}

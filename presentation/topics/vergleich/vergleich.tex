@@ -1,23 +1,37 @@
+%!TEX root = ../../main.tex
 \frame{
 	\frametitle{Im Experiment}
+	\begin{description}
+		\item[Feature Points per Model] 1000
+	\end{description}
 	\centering
 		\textbf{Versuch 1}~~~~~~~~~~~~~\textbf{Versuch 2}~~~~~~~~~~~~~\textbf{Versuch 3}
-		\begin{columns}[c]
-    	\begin{column}{3cm}
+		\begin{columns}[t]
+	 	
+    	\begin{column}{4cm}
     	\centering
-    	
+
+
     	\begin{itemize}
     		\item 6 Modelle aus Stanford 3D Scanning Repository
-    		\item Mit Modellen 45 Szenen erzeugt
-    	\end{itemize}
+    		\item Mit jeweils einigen Modellen 45 Szenen erzeugt
+    		\item 45 Szenen mit Gaussrauschen versetzt $(\sigma \in {0.1,0.2,0.3})$.
+    	\end{itemize} 
 
      	\end{column}
-    	\begin{column}{3cm}
+    	\begin{column}{4cm}
     	\centering
-    	
+    	\begin{itemize}
+    		\item Szenen aus Versuch 1
+    		\item Subsampling $f = \frac{1}{8}$
+    		
+    	\end{itemize} 
     	\end{column}
-    	\begin{column}{3cm}
-    	\centering
+    	\begin{column}{4cm}
+    	\begin{itemize}
+    	    			\item 8 Modelle, im Labor erzeugt mit Spacetime-Stereo.
+    			\item 15 Szenen, die jeweils zwei der acht Objekte enthalten.	
+    		\end{itemize}  
     	
     	\end{column}
     \end{columns}
@@ -25,13 +39,12 @@
 }
 
 
-%\subsection{Bewertung}
+\subsection{Bewertung}
 \frame{
 	\frametitle{False-Posives?}
 	\centering
 		\includegraphics[height=0.8\textheight]{topics/vergleich/pr.jpg}
 }
-
 
 %%Precision recall
 \frame{
@@ -44,11 +57,13 @@
      		$$ Recall\frac{|TP|}{|TP|+|FN|}$$
      	\end{column}
     	\begin{column}{5cm}
-     		\includegraphics[height=0.8\textheight]{topics/vergleich/pr.jpg}
+     		\includegraphics[height=0.8\textheight]{topics/vergleich/pr2.jpg}
     	\end{column}
     \end{columns}
 }
 
+
+\subsection{Ergebnisse}
 \frame{
 	\frametitle{Ergebnis: Versuch 1}
 	\centering
